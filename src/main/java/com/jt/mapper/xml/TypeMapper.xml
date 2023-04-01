@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.TypeMapper">
+    <select id="getAllType" resultType="com.jt.entity.Type">
+        SELECT * FROM type
+        <if test="tname !=null ">
+            WHERE t_name like #{tname}
+        </if>
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getTypeCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM type
+        <if test="tname !=null ">
+            WHERE t_name like #{tname}
+        </if>
+    </select>
+</mapper>
